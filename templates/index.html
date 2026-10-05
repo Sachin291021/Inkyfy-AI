@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Free Word to Handwriting Converter Online | Inkify AI</title>
+<meta name="description" content="Convert Word documents, PDFs and images into realistic handwritten PDFs online. Choose handwriting styles, pens, paper, spacing, and use your own handwriting with Inkify AI.">
+<meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+<meta name="author" content="Inkify AI">
+<meta name="theme-color" content="#ffffff">
+<link rel="canonical" href="{{ request.url_root.rstrip('/') }}/">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Inkify AI">
+<meta property="og:title" content="Free Word to Handwriting Converter Online | Inkify AI">
+<meta property="og:description" content="Turn Word documents, PDFs and images into realistic handwritten PDFs with customizable styles, pens and paper.">
+<meta property="og:url" content="{{ request.url_root.rstrip('/') }}/">
+<meta property="og:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='favicon.svg') }}">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Free Word to Handwriting Converter Online | Inkify AI">
+<meta name="twitter:description" content="Convert digital documents into realistic handwritten PDFs online with Inkify AI.">
+<meta name="twitter:image" content="{{ request.url_root.rstrip('/') }}{{ url_for('static', filename='favicon.svg') }}">
+<link rel="icon" type="image/svg+xml" href="{{ url_for('static', filename='favicon.svg') }}">
+<link rel="preload" href="{{ url_for('static', filename='webfonts/inter-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="{{ url_for('static', filename='webfonts/caveat-latin-600-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+<style>{{ inline_css()|safe }}</style>
+<script type="application/ld+json">
+{{ {
+  "@context":"https://schema.org",
+  "@type":"WebApplication",
+  "name":"Inkify AI",
+  "url":request.url_root.rstrip('/'),
+  "description":"Online tool that converts Word documents, PDFs and images into realistic handwritten PDFs.",
+  "applicationCategory":"UtilitiesApplication",
+  "operatingSystem":"Web Browser",
+  "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"}
+} | tojson }}
+</script>
+<script type="application/ld+json">
+{{ {
+  "@context":"https://schema.org",
+  "@type":"FAQPage",
+  "mainEntity":[
+    {"@type":"Question","name":"What files can I convert?","acceptedAnswer":{"@type":"Answer","text":"You can upload DOCX, PDF, PNG or JPG files and convert their text into handwritten pages."}},
+    {"@type":"Question","name":"Can I use my own handwriting?","acceptedAnswer":{"@type":"Answer","text":"Yes. Inkify AI includes a My Own Handwriting profile feature for creating and selecting a personal handwriting style."}},
+    {"@type":"Question","name":"Can I download the result?","acceptedAnswer":{"@type":"Answer","text":"Yes. After conversion, the handwritten document can be downloaded as a PDF."}}
+  ]
+} | tojson }}
+</script></head>
+<body>
+<a class="skip" href="#convert">Skip to converter</a>
+<header class="nav"><div class="wrap nav-in">
+  <a class="logo" href="#home"><i data-lucide="feather"></i>Inkify <b>AI</b></a>
+  <button class="burger" id="burger" aria-label="Toggle menu" aria-expanded="false"><i data-lucide="menu"></i></button>
+  <nav id="menu"><a href="#home">Home</a><a href="#how">How It Works</a><a href="#features">Features</a><a href="#about">About</a><a href="#my-handwriting">My Handwriting</a>
+  <a class="btn sm" href="#convert">Convert</a></nav>
+</div></header>
+
+<main>
+<section id="home" class="hero"><div class="wrap hero-in">
+  <div>
+    <span class="pill"><i data-lucide="sparkles"></i> Word → realistic handwriting</span>
+    <h1>Free Word to Handwriting Converter <span class="grad">Online</span></h1>
+    <p class="sub">Convert Word documents, PDFs and images into realistic handwritten PDFs online. Choose a handwriting style, pen, paper and layout, or use your own handwriting profile.</p>
+    <div class="cta"><a class="btn" href="#convert">Convert My Document <i data-lucide="arrow-right"></i></a><a class="btn ghost" href="#features">Explore Features</a></div>
+  </div>
+  <div class="notebook" aria-hidden="true">
+    <div class="nb-line" style="--r:-.6deg">Dear future me,</div>
+    <div class="nb-line" style="--r:.4deg">this page was typed, but it</div>
+    <div class="nb-line" style="--r:-.3deg">looks like I wrote it by hand.</div>
+    <div class="nb-line" style="--r:.7deg">Neat, right?&nbsp;&nbsp;✦</div>
+  </div>
+</div></section>
+
+<section id="modes" class="wrap modes" aria-label="Choose a handwriting source"><div class="mode-grid">
+  <a class="card mode" href="#convert"><i data-lucide="type"></i><div><h2>Handwriting Styles</h2><p>Pick from ready-made pens and handwriting styles and convert your document right now.</p></div><span class="go">Convert a document <i data-lucide="arrow-right"></i></span></a>
+  <a class="card mode mode-own" href="#my-handwriting"><span class="badge new">New</span><i data-lucide="pen-line"></i><div><h2>My Own Handwriting</h2><p>Convert your documents into your own personal handwriting style.</p></div><span class="go">Create my profile <i data-lucide="arrow-right"></i></span></a>
+</div></section>
+
+<section id="convert" class="tool"><div class="wrap">
+  <h2>Convert Word, PDF or Image to Handwriting</h2>
+  <p class="lead">Upload a .docx, PDF, PNG or JPG, customize the handwriting settings, preview the result, and download a realistic handwritten PDF.</p>
+
+  <div id="uploadCard" class="card drop" tabindex="0" role="button" aria-label="Drag &amp; drop your file here or browse, to upload a Word, PDF or image file">
+    <input id="file" type="file" accept=".docx,.pdf,.png,.jpg,.jpeg,application/vnd.openxmlformats-officedocument.wordprocessingml.document,application/pdf,image/png,image/jpeg" hidden>
+    <div id="dropEmpty" class="empty"><i data-lucide="file-up"></i><h3>Drag &amp; drop your file here</h3><p>or <u>browse</u> from your device — .docx, .pdf, .png, .jpg</p></div>
+    <div id="dropFile" class="filebox" hidden>
+      <i data-lucide="file-text"></i>
+      <div class="fi"><b id="fname"></b><span id="fmeta"></span></div>
+      <span class="badge" id="fstatus">Ready</span>
+      <button class="icon" id="replace" title="Replace file" aria-label="Replace file"><i data-lucide="refresh-cw"></i></button>
+      <button class="icon" id="remove" title="Remove file" aria-label="Remove file"><i data-lucide="x"></i></button>
+    </div>
+  </div>
+
+  <div id="studio" class="studio" hidden>
+    <aside class="card panel" aria-label="Handwriting settings">
+      <h3>Handwriting</h3>
+      <label>Style<select data-opt="style">
+        <optgroup label="Classic">
+        <option value="student">Neat student handwriting</option><option value="cursive">Cursive handwriting</option>
+        <option value="casual">Casual handwriting</option><option value="elegant">Elegant handwriting</option>
+        <option value="print">Print-style handwriting</option></optgroup>
+        <optgroup label="Human-like pens">
+        <option value="natural">Natural everyday writing</option><option value="notes">Quick class notes</option>
+        <option value="realpen">Real pen – slanted</option><option value="flowing">Flowing cursive</option>
+        <option value="scribble">Fast scribble</option><option value="thinpen">Thin ballpoint</option>
+        <option value="pencil">Shadows Into Light — Personal notebook style</option><option value="scrawl">Hurried scrawl</option>
+        <option value="schoolkid">School kid</option><option value="marker">Covered By Your Grace — Casual handwritten notes</option>
+        <option value="compact">Nanum Pen Script — Compact pen script</option>
+        <option value="caveat">Caveat — Natural everyday handwriting</option>
+        <option value="caveatbrush">Caveat Brush — Rougher pen-written style</option></optgroup>
+        <option value="custom">My Own Handwriting</option>
+      </select></label>
+      <label id="customProfileWrap" hidden>My handwriting profile<select id="customProfileSelect"><option value="">Select a saved profile</option></select><small class="hint">Only successfully processed profiles can be selected.</small></label>
+      <h3>Pen settings</h3>
+      <div class="lab">Active pen <span class="activepen" id="activePen"><i class="dot"></i><b id="apName">Blue</b><code id="apHex">#1C3EBE</code></span></div>
+      <div class="pens" id="palette" role="radiogroup" aria-label="Pen colour">
+        {% for name, hexv in pens %}<button type="button" class="pen{{ ' on' if name == 'blue' }}" data-pen="{{ name }}" data-hex="{{ hexv }}" style="--c:{{ hexv }}" role="radio" aria-checked="{{ 'true' if name == 'blue' else 'false' }}" title="{{ name|capitalize }}" aria-label="{{ name|capitalize }}"></button>{% endfor %}
+        <label class="pen custom" id="customSwatch" title="Custom colour" aria-label="Custom colour"><input type="color" id="penPicker" value="#1c3ebe"></label>
+      </div>
+      <div class="rgbrow" aria-label="Custom colour values">
+        <label>HEX<input id="penHex" type="text" maxlength="7" placeholder="#1C3EBE" spellcheck="false" autocomplete="off"></label>
+        <label>R<input id="penR" type="number" min="0" max="255" inputmode="numeric"></label>
+        <label>G<input id="penG" type="number" min="0" max="255" inputmode="numeric"></label>
+        <label>B<input id="penB" type="number" min="0" max="255" inputmode="numeric"></label>
+      </div>
+      <p class="note" id="penErr" hidden></p>
+
+      <div class="lab">Pen for each part of the text</div>
+      <p class="rolehint">Choose a colour above, then press <b>Set</b> next to the part that should use it.</p>
+      <div class="roles" id="roles">
+        <div class="role" data-role="body"><i class="dot"></i><span class="rn"><b>Body text</b><small></small></span><button type="button" class="mini" data-set="body" title="Use the active pen for body text" aria-label="Set the active pen for body text">Set</button></div>
+        <div class="role" data-role="heading"><i class="dot"></i><span class="rn"><b>Headings</b><small></small></span><button type="button" class="mini" data-same="heading" title="Headings use the body pen">Same</button><button type="button" class="mini" data-set="heading" title="Use the active pen for headings" aria-label="Set the active pen for headings">Set</button></div>
+        <div class="role" data-role="important"><i class="dot"></i><span class="rn"><b>Important notes</b><small></small></span><button type="button" class="mini" data-set="important" title="Use the active pen for important notes" aria-label="Set the active pen for important notes">Set</button></div>
+        <div class="role" data-role="definition"><i class="dot"></i><span class="rn"><b>Definitions</b><small></small></span><button type="button" class="mini" data-set="definition" title="Use the active pen for definitions" aria-label="Set the active pen for definitions">Set</button></div>
+        <div class="role" data-role="highlight"><i class="dot"></i><span class="rn"><b>Highlighted</b><small></small></span><button type="button" class="mini" data-set="highlight" title="Use the active pen for highlighted content" aria-label="Set the active pen for highlighted content">Set</button></div>
+      </div>
+      <button type="button" class="btn ghost block sm" id="colourText"><i data-lucide="highlighter"></i> Colour parts of my text</button>
+
+      <div class="lab">Pen thickness</div>
+      <div class="seg" id="thickness" role="radiogroup" aria-label="Pen thickness">
+        <button type="button" role="radio" aria-checked="false" data-th="thin">Thin</button><button type="button" class="on" role="radio" aria-checked="true" data-th="medium">Medium</button><button type="button" role="radio" aria-checked="false" data-th="thick">Thick</button>
+      </div>
+      <label>Ink intensity <output></output><input type="range" data-opt="ink_intensity" min="40" max="100" step="5" value="100" data-unit="%"></label>
+      <label>Natural variation <output></output><input type="range" data-opt="ink_variation" min="0" max="10" step="0.5" value="3"></label>
+      <label>Marker highlighting<select data-opt="highlight"><option value="off">Off</option><option value="marked">Only “Highlighted” text</option><option value="colored">All coloured text</option></select></label>
+      <h3>Paper</h3>
+      <label>Paper style<select data-opt="paper"><option value="ruled">Ruled notebook</option><option value="plain">Plain white</option><option value="cream">Cream</option><option value="grid">Grid</option></select></label>
+      <label>Page size<select data-opt="page_size"><option>A4</option><option>Letter</option></select></label>
+      <h3>Layout</h3>
+      <label>Font size <output></output><input type="range" data-opt="font_size" min="12" max="32" step="1" value="18" data-unit=" pt"></label>
+      <label>Line spacing <output></output><input type="range" data-opt="line_spacing" min="1" max="2.5" step="0.1" value="1.5" data-unit="×"></label>
+      <label>Page margin <output></output><input type="range" data-opt="margin" min="8" max="40" step="1" value="15" data-unit=" mm"></label>
+      <label>Left margin <output></output><input type="range" data-opt="left_margin" min="0" max="40" step="1" value="10" data-unit=" mm"></label>
+      <label>Irregularity <output></output><input type="range" data-opt="irregularity" min="0" max="10" step="0.5" value="3"></label>
+      <button class="btn block" id="convertBtn"><i data-lucide="wand-2"></i> Convert to Handwriting</button>
+      <div id="result" class="result" hidden>
+        <i data-lucide="check-circle-2"></i><b>Conversion complete!</b>
+        <span id="resInfo"></span>
+        <button class="btn ghost block" id="editAfter"><i data-lucide="pencil-line"></i> Edit text &amp; adjust</button>
+        <a class="btn block" id="dl" href="#" role="button" download="document-handwritten.pdf"><i data-lucide="download"></i><span id="dlLabel">Download PDF</span></a>
+        <button class="btn ghost block" id="another">Convert another document</button>
+      </div>
+    </aside>
+
+    <section class="card viewer" aria-label="Preview">
+      <div class="vbar">
+        <div class="tag" id="tag"></div>
+        <div class="ctrl">
+          <button class="btn ghost sm" id="editBtn" aria-expanded="false"><i data-lucide="pencil-line"></i> Edit text</button>
+          <span class="sep"></span>
+          <button class="icon" id="prev" aria-label="Previous page"><i data-lucide="chevron-left"></i></button>
+          <span id="pg">1 / 1</span>
+          <button class="icon" id="next" aria-label="Next page"><i data-lucide="chevron-right"></i></button>
+          <span class="sep"></span>
+          <button class="icon" id="zout" aria-label="Zoom out"><i data-lucide="zoom-out"></i></button>
+          <span id="zl">100%</span>
+          <button class="icon" id="zin" aria-label="Zoom in"><i data-lucide="zoom-in"></i></button>
+        </div>
+      </div>
+      <div class="legend" id="legend" aria-label="Pens used in this document" hidden><span>Pens in use</span><div id="legendChips"></div></div>
+      <div class="vbody" id="vbody">
+      <div class="editor" id="editor" hidden>
+        <label for="txt">Edit your text <output id="wc"></output></label>
+        <p class="hint">One paragraph per line. Blank line = extra spacing. Start a line with <code>#</code>, <code>##</code> or <code>###</code> for a heading. The preview updates as you type.</p>
+        <div class="ctools" id="ctools" role="toolbar" aria-label="Colour the selected text">
+          <span class="ct-title">Colour</span>
+          <button type="button" class="ctool" id="applyPen" title="Colour the selected words, or the whole line(s) if nothing is selected"><i class="dot" id="applyDot"></i><span id="applyName">Apply Blue</span></button>
+          <button type="button" class="ctool" data-apply="important"><i class="dot" data-dot="important"></i>Important</button>
+          <button type="button" class="ctool" data-apply="definition"><i class="dot" data-dot="definition"></i>Definition</button>
+          <button type="button" class="ctool" data-apply="highlight"><i class="dot" data-dot="highlight"></i>Highlight</button>
+          <button type="button" class="ctool plain" id="clearPen" title="Remove colour from the selection"><i data-lucide="eraser"></i>Clear</button>
+        </div>
+        <p class="hint small">Select some words to colour just those, or put the cursor in a line (or select several lines) to colour whole paragraphs. Colours appear as tags like <code>{red}</code> – edit or delete them freely.</p>
+        <textarea id="txt" spellcheck="false"></textarea>
+        <div class="erow"><button class="btn ghost sm" id="resetTxt">Reset to original</button><button class="btn sm" id="doneEdit">Done</button></div>
+      </div>
+      <div class="stage" id="stage"><img id="img" alt="Handwritten page preview" decoding="async" width="794" height="1123"><div class="loading" id="loading"><div class="spin"></div><span>Rendering…</span></div></div>
+      </div>
+    </section>
+  </div>
+</div></section>
+
+<section id="myhand" class="own" aria-labelledby="hwTitle"><div class="wrap">
+  <a class="hw-back" href="#convert"><i data-lucide="arrow-left"></i> Back to converter</a>
+  <div class="hw-head">
+    <span class="pill"><i data-lucide="pen-line"></i> My Own Handwriting</span>
+    <h2 id="hwTitle">Create your personal handwriting profile</h2>
+    <p class="lead">Convert your documents into your own personal handwriting style. Fill in our template with your real handwriting, upload it, and save it as a profile.</p>
+  </div>
+
+  <div id="hwEditBanner" class="hw-banner" hidden role="status">
+    <i data-lucide="pencil-line"></i><span>Editing <b id="hwEditName"></b> – add or remove samples, rename it, then press <b>Save Profile</b>.</span>
+    <button type="button" class="btn ghost sm" id="hwCancelEdit">Cancel</button>
+  </div>
+
+  <div class="hw-steps">
+    <!-- 1 · Create -->
+    <section class="card hw-card" aria-labelledby="hwS1">
+      <div class="hw-h"><span class="hw-n">1</span><h3 id="hwS1">Create My Handwriting</h3></div>
+      <label for="hwName">Profile name <small class="hw-count"><span id="hwNameCount">0</span>/40</small></label>
+      <input id="hwName" type="text" maxlength="40" placeholder="e.g. My Handwriting" autocomplete="off" spellcheck="false" aria-describedby="hwNameErr">
+      <p class="note" id="hwNameErr" hidden></p>
+      <div class="hw-chips" aria-label="Name suggestions">
+        <button type="button" class="ctool" data-name="My Handwriting">My Handwriting</button>
+        <button type="button" class="ctool" data-name="College Notes">College Notes</button>
+        <button type="button" class="ctool" data-name="Personal Writing">Personal Writing</button>
+      </div>
+      <p class="hint">Give each handwriting style its own profile – for example neat notes and quick everyday writing.</p>
+    </section>
+
+    <!-- 2 · Template -->
+    <section class="card hw-card" aria-labelledby="hwS2">
+      <div class="hw-h"><span class="hw-n">2</span><h3 id="hwS2">Download Template</h3></div>
+      <div class="hw-tpl">
+        <div class="hw-sheet" aria-hidden="true"><i class="c tl"></i><i class="c tr"></i><i class="c bl"></i><i class="c br"></i>
+          <div class="g"><b>A</b><b>B</b><b>C</b><b>D</b><b>a</b><b>b</b><b>c</b><b>d</b><b>1</b><b>2</b><b>3</b><b>?</b></div></div>
+        <div>
+          <p class="hint">A printable A4 sheet with A–Z, a–z, 0–9, punctuation, symbols and sample sentences – a roomy writing box for every character.</p>
+          <div class="hw-actions">
+            <a class="btn" id="hwDownload" href="/api/hw/template.pdf" download="Inkify-Handwriting-Template.pdf"><i data-lucide="download"></i> Download PDF</a>
+            <a class="btn ghost" id="hwPrint" href="/api/hw/template.pdf?inline=1" target="_blank" rel="noopener"><i data-lucide="printer"></i> Print</a>
+          </div>
+        </div>
+      </div>
+      <ol class="hw-tips"><li>Print at <b>100%</b> on plain A4 paper</li><li>Write with a dark pen, naturally – inside the boxes</li><li>Scan or photograph flat, in bright light, then upload</li></ol>
+    </section>
+
+    <!-- 3 · Upload -->
+    <section class="card hw-card wide" aria-labelledby="hwS3">
+      <div class="hw-h"><span class="hw-n">3</span><h3 id="hwS3">Upload Handwriting Samples</h3></div>
+      <input id="hwFile" type="file" multiple hidden accept=".png,.jpg,.jpeg,.pdf,image/png,image/jpeg,application/pdf">
+      <div id="hwDrop" class="drop hw-drop" tabindex="0" role="button" aria-label="Upload handwriting samples: drag and drop files or press Enter to browse">
+        <div class="empty"><i data-lucide="upload-cloud"></i><h3>Drag &amp; drop your filled template here</h3>
+          <p>PNG, JPG, JPEG or PDF · multiple files allowed</p>
+          <button type="button" class="btn" id="hwBrowse"><i data-lucide="folder-open"></i> Browse files</button></div>
+      </div>
+      <p class="hint" id="hwLimits">Up to 20 files · max 8 MB each · images at least 200 px · PDFs up to 12 pages.</p>
+    </section>
+
+    <!-- 4 · Preview -->
+    <section class="card hw-card wide" aria-labelledby="hwS4">
+      <div class="hw-h"><span class="hw-n">4</span><h3 id="hwS4">Preview Samples</h3>
+        <span class="hw-sum" id="hwSummary">No samples yet</span>
+        <button type="button" class="btn ghost sm" id="hwAdd" hidden><i data-lucide="plus"></i> Add more samples</button></div>
+      <div id="hwEmpty" class="hw-empty"><i data-lucide="images"></i><p>Your uploaded samples will appear here.</p></div>
+      <div id="hwGrid" class="hw-samples" aria-live="polite"></div>
+    </section>
+
+    <!-- 5 · Process -->
+    <section class="card hw-card wide" aria-labelledby="hwS5">
+      <div class="hw-h"><span class="hw-n">5</span><h3 id="hwS5">Save &amp; Process Handwriting</h3></div>
+      <div class="hw-final">
+        <p class="hint" id="hwFinalHint">Upload at least one sample to continue.</p>
+        <div class="hw-actions">
+          <button type="button" class="btn" id="hwSave" disabled><i data-lucide="save"></i> Save Profile</button>
+          <button type="button" class="btn ghost" id="hwProcess" disabled aria-describedby="hwFinalHint"><i data-lucide="wand-2"></i> Process Handwriting</button>
+        </div>
+      </div>
+    </section>
+  </div>
+
+  <div id="hwProfilesSec" class="hw-profiles" aria-labelledby="hwPT">
+    <div class="hw-ph"><h3 id="hwPT">Saved Profiles</h3><span class="badge" id="hwPCount">0</span></div>
+    <div id="hwProfiles" class="hw-pgrid" aria-live="polite"></div>
+    <div id="hwNoProfiles" class="card hw-empty big"><i data-lucide="user-round-pen"></i><p><b>No saved profiles yet</b><br>Upload your samples above and press <b>Save Profile</b> – it will show up here.</p></div>
+  </div>
+</div></section>
+
+<dialog id="hwPreviewDlg" class="hw-dlg" aria-labelledby="hwPvTitle">
+  <div class="hw-dh"><div><h3 id="hwPvTitle"></h3><span id="hwPvMeta"></span></div><button type="button" class="icon" data-close aria-label="Close preview"><i data-lucide="x"></i></button></div>
+  <div id="hwPvGrid" class="hw-samples pv"></div>
+</dialog>
+<dialog id="hwConfirmDlg" class="hw-dlg small" aria-labelledby="hwCfTitle">
+  <h3 id="hwCfTitle"></h3><p id="hwCfText"></p>
+  <div class="hw-actions end"><button type="button" class="btn ghost" data-close>Cancel</button><button type="button" class="btn danger" id="hwCfOk">Delete</button></div>
+</dialog>
+
+<section id="how" class="wrap sec"><h2>How it works</h2><div class="grid3">
+  <div class="card step"><span>1</span><h3>Upload</h3><p>Drop in a .docx, PDF or image. Headings and paragraph breaks are preserved.</p></div>
+  <div class="card step"><span>2</span><h3>Customise</h3><p>Choose handwriting, pen colours, paper and spacing. The preview updates instantly.</p></div>
+  <div class="card step"><span>3</span><h3>Download</h3><p>Convert and save a multi-page PDF that opens anywhere.</p></div>
+</div></section>
+
+<section id="features" class="wrap sec"><h2>Features</h2><div class="grid3">
+  <div class="card feat"><i data-lucide="pen-tool"></i><h3>Genuine imperfection</h3><p>Per-letter jitter, baseline wobble, slight rotation and pressure variation.</p></div>
+  <div class="card feat"><i data-lucide="notebook"></i><h3>Real paper</h3><p>Ruled, plain, cream or grid — text sits on the lines like a real notebook.</p></div>
+  <div class="card feat"><i data-lucide="palette"></i><h3>Multi-colour pens</h3><p>Use several pen colours in one document – headings, notes, definitions and highlights – in the preview and the PDF.</p></div>
+  <div class="card feat"><i data-lucide="sliders-horizontal"></i><h3>Full control</h3><p>Font size, spacing, margins, page size and irregularity.</p></div>
+  <div class="card feat"><i data-lucide="eye"></i><h3>Live preview</h3><p>Multi-page navigation with zoom.</p></div>
+  <div class="card feat"><i data-lucide="shield-check"></i><h3>Private by design</h3><p>Uploads are deleted immediately; results expire after an hour.</p></div>
+  <div class="card feat"><i data-lucide="smartphone"></i><h3>Works everywhere</h3><p>Responsive on desktop, tablet and mobile.</p></div>
+</div></section>
+
+<section id="about" class="wrap sec"><h2>About Inkify AI</h2>
+<p class="lead">Inkify AI is an online handwriting converter for turning digital documents into natural-looking handwritten pages. It supports Word documents, PDFs and images, customizable pen colours and paper styles, live preview, and personal handwriting profiles.</p>
+</section>
+<section id="faq" class="wrap sec"><h2>Frequently Asked Questions</h2><div class="grid3">
+<div class="card feat"><h3>What files can I convert?</h3><p>You can upload DOCX, PDF, PNG or JPG files. The converter extracts the text and renders it as handwritten pages.</p></div>
+<div class="card feat"><h3>Can I use my own handwriting?</h3><p>Yes. Use the My Own Handwriting section to create and save a handwriting profile. A processed profile can then be selected during conversion.</p></div>
+<div class="card feat"><h3>Can I download the result?</h3><p>Yes. After conversion, Inkify AI provides the handwritten document as a PDF download.</p></div>
+</div></section>
+</main>
+<footer><div class="wrap">© Inkify AI · Built with Flask &amp; Pillow</div></footer>
+<div id="toasts" aria-live="polite"></div>
+<script src="{{ asset('dist/app.min.js') }}" defer></script>
+</body></html>
