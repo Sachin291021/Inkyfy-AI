@@ -2,6 +2,7 @@ services:
   - type: web
     name: inkify-ai
     runtime: docker
+    plan: free
     dockerfilePath: ./Dockerfile
     healthCheckPath: /health
     envVars:
